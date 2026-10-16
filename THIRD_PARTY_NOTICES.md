@@ -32,6 +32,22 @@ are imported or read for contract tests rather than vendored wholesale.
 Links describe upstream provenance; they are not a substitute for checking
 the licenses of a future built artifact and its exact dependency versions.
 
+The source installer now downloads dependencies into user-owned environments
+using the exact version/hash resolutions in `requirements/*.lock`. Those
+environments and their wheels are not redistributed in the source archive.
+Installed distribution metadata retains each package's license notices.
+Native GTK/GI/Cairo/evdev and audio libraries remain host-provided. See
+[dependency provenance](docs/provenance/dependencies.md).
+
+## Architecture viewer
+
+The generated `docs/architecture/pipeline.html` incorporates the Archify 2.16
+viewer under the MIT License: Copyright (c) 2026 tt-a1i (Archify), and
+Copyright (c) 2025 Cocoon AI (original architecture-diagram-generator).
+Its full notice is retained in [LICENSES/archify-MIT.txt](LICENSES/archify-MIT.txt).
+The ARCA Dicta diagram JSON describes this project; the upstream viewer is not
+claimed as ARCA Dicta's original implementation.
+
 ## External model weights
 
 The preserved local preview baseline references `Systran/faster-whisper-small`,

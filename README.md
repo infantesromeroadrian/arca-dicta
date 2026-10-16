@@ -3,17 +3,65 @@
 Technical dictation for Hyprland, developed as an extension to
 [hyprwhspr](https://github.com/goodroot/hyprwhspr).
 
-**Status: extracted development candidate (F1). There is no installable release yet.**
+[Español](README.es.md) · [Install and recover](docs/installation.md) · [Architecture](docs/architecture/pipeline.html) · [CI and test artifacts](https://github.com/infantesromeroadrian/arca-dicta/actions/workflows/ci.yml)
+
+**Development snapshot: 0.1.0-alpha.1. No GitHub Release or released installer yet.**
 
 The extracted prototype combines local provisional previews, final
 transcription through Groq, mandatory bilingual text review through Ollama,
 a readable HUD, and reversible playback muting. Personal runtime paths have
-been replaced by explicit configuration. Installation, distribution and a
-physical end-to-end check of this candidate remain pending.
+been replaced by explicit configuration. The source installer prepares an
+owned test runtime, checks its integrity and offers explicit reversible
+activation. Physical acceptance of the package, the demo and the first
+GitHub Release remain pending.
 
 The initial target is Arch/CachyOS with Hyprland on x86_64. Desktop integration
-is native. This extraction includes no installer, service unit, container,
-model weights, Python environment or provider credentials.
+is native. The artifact contains source and a source installer, with locked
+Python dependencies and a pinned model manifest. It contains no model weights,
+Python environment, provider credentials or container product.
+
+## Try the development snapshot
+
+Build an archive from this checkout, or download `source-installer-<commit SHA>`
+from a successful [Actions run](https://github.com/infantesromeroadrian/arca-dicta/actions/workflows/ci.yml)
+when available. Actions artifacts are test snapshots, not an accepted alpha or
+a GitHub Release. Native hyprwhspr **1.49.0-1** and Python **3.14** must already
+be installed. The [installation guide](docs/installation.md) covers the build,
+checksum, Arch prerequisites and credentials. From the verified, extracted archive:
+
+```sh
+./install install --download-model
+./install doctor --no-service
+```
+
+Preparation neither edits desktop configuration nor starts a service.
+`./install activate` is a separate operation against the existing
+`hyprwhspr.service`. Existing service overrides require explicit
+`--adopt-existing`; they are backed up and preserved. `deactivate` restores
+the previous entrypoint/configuration, while `uninstall` removes only matching
+owned files. Global keyboard bindings are never installed automatically.
+
+The model download verifies four files, including `vocabulary.txt`, which is
+required by this CTranslate2 snapshot. The older low-level runtime guard checks
+three marker files; that presence check alone does not prove model loadability.
+
+## Verified scope
+
+The recorded local Arch run passed 177 tests, Ruff, ShellCheck, all 26 upstream
+contracts and two byte-identical builds. A fresh container user completed
+installation, synthetic speech inference through the local worker, idempotent
+preparation and uninstall. The real service activation passed doctor 35/35;
+deactivation restored all 25 baseline files and modes, with mute and volume
+unchanged on four output sinks. See [CI evidence and artifact identity](docs/validation/ci.md)
+and [the activation and recovery record](docs/validation/installer-baseline.md).
+
+Personal use of the separate existing runtime was accepted by its user. Package
+validation still needs physical dictation in an editor and browser, failure and
+cancellation checks, audible playback restoration, latency measurements and a
+demo. The GitHub Release remains pending. The activation check initiated no
+recording or provider request.
+These results do not establish semantic accuracy or desktop latency. Remote
+CI status belongs to the Actions run for the exact commit.
 
 ## Development configuration
 
@@ -95,7 +143,7 @@ available, from this directory:
 ```sh
 python -B -m unittest discover -v
 ruff check --no-cache .
-shellcheck launch review-hook
+shellcheck launch review-hook install
 ```
 
 These tests use synthetic data, fake providers/Pulse/clipboard boundaries and

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<title>ARCADicta · prueba sintética de pegado</title>
+<style>
+body{max-width:920px;margin:36px auto;padding:0 20px;font:18px system-ui;background:#10171e;color:#e5edf4}
+h1{font-size:26px}label{display:block;margin-top:20px}select,button{font:inherit;padding:8px 12px;margin:8px 10px 8px 0}
+textarea{box-sizing:border-box;width:100%;height:230px;background:#fff;color:#101010;font:24px/1.5 monospace;border:3px solid #73b4ec;border-radius:6px;padding:16px;resize:none}
+p{line-height:1.5}output{display:block;font-variant-numeric:tabular-nums;color:#a4cff4}small{color:#bac8d4}
+</style>
+<h1>Prueba sintética de pegado</h1>
+<p>Deja este campo enfocado. Solo dicta la frase de prueba y usa el control externo acordado. El inicio y la parada del micrófono se controlan fuera de esta página.</p>
+<label for="case">Frase de referencia</label>
+<select id="case">
+  <option value="ES-TECH">ES-TECH</option>
+  <option value="EN-TECH">EN-TECH</option>
+  <option value="MIX-TECH">MIX-TECH</option>
+</select>
+<p id="phrase"></p>
+<label for="target">Destino de pegado — solo contenido sintético</label>
+<textarea id="target" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="privacy"></textarea>
+<button id="clear" type="button">Vaciar y enfocar</button>
+<button id="export" type="button">Descargar diagnóstico numérico</button>
+<output id="state">Sin entrada observada</output>
+<p id="privacy"><small>Sin red, almacenamiento local, micrófono ni lectura del portapapeles. El contenido permanece únicamente en el campo hasta vaciarlo o cerrar la página. La descarga contiene números y estados; nunca el texto.</small></p>
+<p><small>Los eventos de entrada y requestAnimationFrame son diagnósticos. La visibilidad real se confirma en los frames de la región de prueba. El reloj de esta página no se mezcla con las marcas monotónicas del observador.</small></p>
+<script>
+"use strict";
+const phrases = Object.freeze({
+  "ES-TECH": "No cambies request_id. Revisa el RAG pipeline con Docker y conserva 42.",
+  "EN-TECH": "Do not rename request_id. Check the RAG pipeline with Docker and keep 42.",
+  "MIX-TECH": "Revisa el deployment, keep request_id unchanged y no cambies 42."
+});
+const target = document.getElementById("target");
+const caseSelect = document.getElementById("case");
+const state = document.getElementById("state");
+let generation = 0;
+let diagnostics;
+function reset() {
+  generation += 1;
+  target.value = "";
+  diagnostics = {schema: 1, case_id: caseSelect.value, clock: "browser-performance",
+    evidence: "events-only", input_events: 0, characters: 0, line_breaks: 0,
+    first_input_ms: null, next_animation_callback_ms: null};
+  document.getElementById("phrase").textContent = phrases[caseSelect.value];
+  state.textContent = "Sin entrada observada";
+  target.focus();
+}
+target.addEventListener("input", () => {
+  diagnostics.input_events += 1;
+  diagnostics.characters = target.value.length;
+  diagnostics.line_breaks = (target.value.match(/\n/g) || []).length;
+  if (diagnostics.first_input_ms === null && target.value.length) {
+    diagnostics.first_input_ms = performance.now();
+    const current = generation;
+    requestAnimationFrame(() => {
+      if (generation === current) diagnostics.next_animation_callback_ms = performance.now();
+    });
+  }
+  state.textContent = `${diagnostics.input_events} eventos · ${diagnostics.characters} caracteres · ${diagnostics.line_breaks} saltos de línea`;
+});
+document.getElementById("clear").addEventListener("click", reset);
+caseSelect.addEventListener("change", reset);
+document.getElementById("export").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(diagnostics, null, 2) + "\n"], {type: "application/json"});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "dicta-browser-events-only.json";
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
+reset();
+</script>
+</html>

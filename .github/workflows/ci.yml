@@ -1,0 +1,53 @@
+name: Validate source installer
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dicta-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  arch-source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Test and build in disposable Arch Linux
+        env:
+          ARCH_IMAGE: docker.io/library/archlinux@sha256:363129b67b2bc6c5a634f8fb4961a7e2eba213a2ec075d159127b1260290a722
+        run: |
+          mkdir -p "$RUNNER_TEMP/dicta-ci"
+          docker pull "$ARCH_IMAGE"
+          docker run --rm --name "arca-dicta-ci-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" \
+            --security-opt no-new-privileges \
+            --mount "type=bind,src=$GITHUB_WORKSPACE,dst=/src,readonly" \
+            --mount "type=bind,src=$RUNNER_TEMP/dicta-ci,dst=/out" \
+            "$ARCH_IMAGE" bash /src/tools/ci/run.sh /out
+      - name: Retain validation evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: arch-validation-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/dicta-ci/*.txt
+            ${{ runner.temp }}/dicta-ci/upstream-contract.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Retain source installer candidate
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: source-installer-${{ github.sha }}
+          path: ${{ runner.temp }}/dicta-ci/release/*
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14

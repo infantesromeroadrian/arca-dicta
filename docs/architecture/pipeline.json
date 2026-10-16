@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "ARCA Dicta · del micrófono al texto revisado",
+    "repository": {
+      "url": "https://github.com/infantesromeroadrian/arca-dicta",
+      "revision": "1cf0e6432c460ad4f1603df6392e796a10879b52"
+    },
+    "quality_profile": "showcase",
+    "viewBox": [1260, 650],
+    "animation": "none"
+  },
+  "components": [
+    {"id": "capture", "type": "backend", "label": "Captura nativa", "sublabel": "hyprwhspr · un micrófono", "pos": [30, 290], "size": [210, 74], "sources": [{"path": "main.py", "label": "Adaptación del ciclo de captura"}]},
+    {"id": "groq", "type": "cloud", "label": "Groq", "sublabel": "whisper-large-v3-turbo", "pos": [360, 290], "size": [210, 74]},
+    {"id": "review", "type": "security", "label": "Revisión obligatoria", "sublabel": "Validar antes de entregar", "pos": [690, 290], "size": [210, 74], "sources": [{"path": "review_gate.py", "label": "Retención y entrega"}, {"path": "review.py", "label": "Revisión y guardas"}]},
+    {"id": "destination", "type": "frontend", "label": "Editor o navegador", "sublabel": "Texto revisado · sin Enter", "pos": [1020, 290], "size": [210, 74]},
+    {"id": "ollama", "type": "cloud", "label": "Ollama Cloud", "sublabel": "deepseek-v4.1-flash", "pos": [690, 70], "size": [210, 74], "sources": [{"path": "review.py", "label": "Proveedor de revisión"}]},
+    {"id": "audio", "type": "backend", "label": "Audio del escritorio", "sublabel": "Estado previo preservado", "pos": [30, 70], "size": [210, 74], "sources": [{"path": "playback.py", "label": "Mute y restauración"}]},
+    {"id": "preview", "type": "backend", "label": "Preview local", "sublabel": "Whisper small · CPU/int8", "pos": [30, 510], "size": [210, 74], "sources": [{"path": "preview.py", "label": "Audio reciente y generaciones"}, {"path": "worker.py", "label": "Inferencia local"}]},
+    {"id": "hud", "type": "frontend", "label": "HUD de Hyprland", "sublabel": "Texto provisional y estados", "pos": [360, 510], "size": [210, 74], "sources": [{"path": "hud_runtime/mic_osd/hud.py", "label": "Vista del dictado"}]}
+  ],
+  "boundaries": [
+    {"kind": "region", "label": "STT externo", "wraps": ["groq"], "pad": 20},
+    {"kind": "region", "label": "Revisión externa", "wraps": ["ollama"], "pad": 20}
+  ],
+  "connections": [
+    {"id": "final-audio", "from": "capture", "to": "groq", "label": "Audio · HTTPS", "variant": "emphasis"},
+    {"id": "final-text", "from": "groq", "to": "review", "label": "Transcripción", "variant": "emphasis"},
+    {"id": "reviewed-paste", "from": "review", "to": "destination", "label": "Pegado", "variant": "emphasis"},
+    {"id": "cloud-review", "from": "review", "to": "ollama", "label": "Texto / JSON · HTTPS", "variant": "security"},
+    {"id": "audio-lifecycle", "from": "capture", "to": "audio", "label": "Silenciar / restaurar"},
+    {"id": "local-pcm", "from": "capture", "to": "preview", "label": "PCM reciente · pipe", "variant": "dashed", "labelDy": 86},
+    {"id": "draft-only", "from": "preview", "to": "hud", "label": "Borrador local", "variant": "dashed"}
+  ],
+  "cards": [
+    {"dot": "cyan", "title": "Implementado", "items": ["Flujo extraído y comprobado con pruebas automáticas.", "La instalación portable y su recorrido físico están en validación."]},
+    {"dot": "rose", "title": "Fallo de revisión", "items": ["Retener un dictado en memoria; reintentar o descartar.", "Nunca entregar el texto crudo. Reiniciar pierde el pendiente."]},
+    {"dot": "emerald", "title": "Límites de datos", "items": ["Groq recibe audio; Ollama recibe la transcripción.", "El preview no se pega. El worker no recibe claves cloud."]}
+  ]
+}
