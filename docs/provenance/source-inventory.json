@@ -1,0 +1,184 @@
+{
+  "snapshot": "20261016-handy-hyprwhspr/strict-review-1335/candidate",
+  "date": "2026-10-16",
+  "source_file_count": 22,
+  "verification_basis": "Coordinator verified snapshot against deployed runtime and deployment manifest; extraction rehashed all 22 source files. No private manifest fields exported.",
+  "files": [
+    {
+      "source": "HUD.md",
+      "source_sha256": "37a3bf0b452d78f6e89a8d63567a1217e988a07c7ae29afa1d7d1a620552d5ee",
+      "category": "documentation",
+      "destination": "HUD.md",
+      "disposition": "adapted",
+      "candidate_sha256": "acede6be9c94f244ebef044f414bff5638f81ebb5707835911ee32d7ced1da42"
+    },
+    {
+      "source": "PLAYBACK.md",
+      "source_sha256": "7e96476a3e6095aa197db039709be8b4bc0f773983a4d01a48c2060256844fb1",
+      "category": "documentation",
+      "destination": "PLAYBACK.md",
+      "disposition": "adapted",
+      "candidate_sha256": "c7321821f50f7e21b503db728cd220b0f990694bfbdb3b308f96a695a7d9f144"
+    },
+    {
+      "source": "README.md",
+      "source_sha256": "3a24fb47de9d04e179704514d1d03a0a82e0aec6865adca00772da6979d0a559",
+      "category": "documentation",
+      "destination": "README.md",
+      "disposition": "adapted",
+      "candidate_sha256": "1dd375182016fed145a7bc5ec0e6c55a5b67644569008c41e49787f69f60f92a"
+    },
+    {
+      "source": "REVIEW.md",
+      "source_sha256": "225a5b16f8224be46f42fa67ac7b8b97c6bd5ac402328859485bc36a1d27aead",
+      "category": "documentation",
+      "destination": "REVIEW.md",
+      "disposition": "adapted",
+      "candidate_sha256": "eda03e8819c2794b196df6dae6fee117484b76ec5cb9c36cd9cae56c582752fc"
+    },
+    {
+      "source": "hud_bridge.py",
+      "source_sha256": "962a28217488098ef2e11884117362dfc09b72a26846d3c58d4cf39a9090b8de",
+      "category": "implementation-adapter",
+      "destination": "hud_bridge.py",
+      "disposition": "adapted",
+      "candidate_sha256": "80abe5da2ae54a87e0e6ad77250cce93eea2b9026a518f7ebbda1295b62c58b8"
+    },
+    {
+      "source": "hud_runtime/mic_osd/__init__.py",
+      "source_sha256": "e6c14f56afccb2ccc5e137aaf93521e5018d6c41bd4cf9f2e916fdc1733163fc",
+      "category": "implementation-adapter",
+      "destination": "hud_runtime/mic_osd/__init__.py",
+      "disposition": "adapted",
+      "candidate_sha256": "01dfb1289244cf957498aec7572062881c43a77dee27e4d0874993abb432b54a"
+    },
+    {
+      "source": "hud_runtime/mic_osd/hud.py",
+      "source_sha256": "92c5607793b6851fbc315339119ae9a13db5dc7813805d31934907f95c49d324",
+      "category": "implementation-adapter",
+      "destination": "hud_runtime/mic_osd/hud.py",
+      "disposition": "unchanged",
+      "candidate_sha256": "92c5607793b6851fbc315339119ae9a13db5dc7813805d31934907f95c49d324"
+    },
+    {
+      "source": "hud_runtime/mic_osd/main.py",
+      "source_sha256": "44a317ea328b8bcaaa4aea8f53b4c2bc52eded5e9118e447414fab089c34f199",
+      "category": "implementation-adapter",
+      "destination": "hud_runtime/mic_osd/main.py",
+      "disposition": "adapted",
+      "candidate_sha256": "c5cf73bacb0b8e3caa4e35c7b5f211aa026bb4f2a108206fe3eae6c973481f54"
+    },
+    {
+      "source": "launch",
+      "source_sha256": "f15ea92513e016413e2e40397e295660e1e6440e052a179d630b6fcaaa749e9c",
+      "category": "entrypoint",
+      "destination": "launch",
+      "disposition": "adapted",
+      "candidate_sha256": "f7c82399f8b6412cb67a04eeed7948d700951e8da32c9b874063ae00bb1671ec"
+    },
+    {
+      "source": "main.py",
+      "source_sha256": "226d20fe6e1d76f1831dd22a6cdb5334a201cf3f12a0b2c820e46bbae8d48a90",
+      "category": "implementation-adapter",
+      "destination": "main.py",
+      "disposition": "adapted",
+      "candidate_sha256": "f1b85876d8d4450a0593b0731d8984c5f73d39f4f28985dbb87bf56d5aacebd1"
+    },
+    {
+      "source": "playback.py",
+      "source_sha256": "6bdb48f0331a1328b83a466642013d9f70db53d3529059b49cfdf5afcc330dc8",
+      "category": "implementation-adapter",
+      "destination": "playback.py",
+      "disposition": "unchanged",
+      "candidate_sha256": "6bdb48f0331a1328b83a466642013d9f70db53d3529059b49cfdf5afcc330dc8"
+    },
+    {
+      "source": "preview.py",
+      "source_sha256": "95afd1c441c15c136795dc59fe01d40d7e2abf578183dc84195c78295894b570",
+      "category": "implementation-adapter",
+      "destination": "preview.py",
+      "disposition": "unchanged",
+      "candidate_sha256": "95afd1c441c15c136795dc59fe01d40d7e2abf578183dc84195c78295894b570"
+    },
+    {
+      "source": "protocol.py",
+      "source_sha256": "0e9ae096748cd4b32235cabf109be807b14e637edb8068180955b6e0a880a7aa",
+      "category": "implementation-adapter",
+      "destination": "protocol.py",
+      "disposition": "unchanged",
+      "candidate_sha256": "0e9ae096748cd4b32235cabf109be807b14e637edb8068180955b6e0a880a7aa"
+    },
+    {
+      "source": "review-hook",
+      "source_sha256": "b389403d579f1da45e02a568b9e830eb3c3bf030d67ab0fbe5c18589557e227a",
+      "category": "entrypoint",
+      "destination": "review-hook",
+      "disposition": "unchanged",
+      "candidate_sha256": "b389403d579f1da45e02a568b9e830eb3c3bf030d67ab0fbe5c18589557e227a"
+    },
+    {
+      "source": "review.py",
+      "source_sha256": "05815d27b40c4ca68e457dc837bb56c9326df9351fbd2ef119417b0c5301bf6e",
+      "category": "implementation-adapter",
+      "destination": "review.py",
+      "disposition": "adapted",
+      "candidate_sha256": "3fde9b3491bb745c31ece18ff24028bf74c01287d7fd994504115d3d4914e75a"
+    },
+    {
+      "source": "review_gate.py",
+      "source_sha256": "9ff4455b7dd99f8a4d8caba2c333faee96144190d49b8e3703632b325e1fd7c6",
+      "category": "implementation-adapter",
+      "destination": "review_gate.py",
+      "disposition": "adapted",
+      "candidate_sha256": "b67f8ac4d968e0e66b139ab108c701eebd461184b36b39b02b1aa77168b40221"
+    },
+    {
+      "source": "test_hud.py",
+      "source_sha256": "4b2039de8232621cad19fab4c394957e63a5088020b66458deb68a0c5a05a0c9",
+      "category": "offline-test",
+      "destination": "test_hud.py",
+      "disposition": "unchanged",
+      "candidate_sha256": "4b2039de8232621cad19fab4c394957e63a5088020b66458deb68a0c5a05a0c9"
+    },
+    {
+      "source": "test_playback.py",
+      "source_sha256": "99297f36cce14ea77b4ad3b336e8ba1fa632a5835a52d7a152c6266619a941ee",
+      "category": "offline-test",
+      "destination": "test_playback.py",
+      "disposition": "adapted",
+      "candidate_sha256": "1eabcbee65e6c8b5824a08e0d54bb8f442bea59c0776efbb50408ecf0e106c3e"
+    },
+    {
+      "source": "test_preview.py",
+      "source_sha256": "9edc64d5a7bcdea5b41e6feb2af6b9d51ce1db440b9bb52dd8288da4f25353f3",
+      "category": "offline-test",
+      "destination": "test_preview.py",
+      "disposition": "unchanged",
+      "candidate_sha256": "9edc64d5a7bcdea5b41e6feb2af6b9d51ce1db440b9bb52dd8288da4f25353f3"
+    },
+    {
+      "source": "test_review.py",
+      "source_sha256": "bb1347e247f119c53a38d8a1d1437c47a228119d98fa3deb7fac957eb331a4f4",
+      "category": "offline-test",
+      "destination": "test_review.py",
+      "disposition": "adapted",
+      "candidate_sha256": "eedbaf6721c66b4e83f78b392a2147d8e47dbe58a8c9cfa22be4e874229ba66b"
+    },
+    {
+      "source": "test_review_gate.py",
+      "source_sha256": "02700b309bbc28754a36d9f3a8dfb14557a1f8b77bd7d072b5e9ed107e48dbff",
+      "category": "offline-test",
+      "destination": "test_review_gate.py",
+      "disposition": "adapted",
+      "candidate_sha256": "7c32e1b6f6a27cfd12bd8a9e16413d300b22f280d36a5505311b6d706d7cedc6"
+    },
+    {
+      "source": "worker.py",
+      "source_sha256": "53e1dc1ef53405455acd868f259abca6c8809a706e1f1d4c9e1fd52b139f2e87",
+      "category": "implementation-adapter",
+      "destination": "worker.py",
+      "disposition": "unchanged",
+      "candidate_sha256": "53e1dc1ef53405455acd868f259abca6c8809a706e1f1d4c9e1fd52b139f2e87"
+    }
+  ]
+}

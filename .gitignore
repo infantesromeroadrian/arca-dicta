@@ -1,0 +1,27 @@
+# User credentials and local configuration
+.env
+.env.*
+!.env.example
+secrets/
+config.local.*
+
+# Runtime state, recordings and personal logs
+*.log
+recordings/
+transcripts/
+runtime/
+
+# Environments, caches and generated artifacts
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+models/

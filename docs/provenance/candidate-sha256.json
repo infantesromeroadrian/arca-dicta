@@ -1,0 +1,227 @@
+{
+  "candidate": "ARCA Dicta F1 isolated extraction with F1.3.3 retained-review repair",
+  "date": "2026-10-16",
+  "excludes": [
+    ".git/",
+    "docs/provenance/candidate-sha256.json"
+  ],
+  "file_count": 36,
+  "files": [
+    {
+      "path": ".env.example",
+      "sha256": "56ad1bd685144b19f4d0cd09e63fc7a225311c166e8488fe254b9c5a89341c49",
+      "bytes": 488,
+      "mode": "0o644"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "7278f7a1347480ff4b711a37cbcc31fbd5e553cd5e941ed7490652e1a905145d",
+      "bytes": 357,
+      "mode": "0o644"
+    },
+    {
+      "path": "HUD.md",
+      "sha256": "acede6be9c94f244ebef044f414bff5638f81ebb5707835911ee32d7ced1da42",
+      "bytes": 4588,
+      "mode": "0o600"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "5d3b4154ab3ac55dcc7ede9c985d0e1084cf7b42e3b5e71a607921162a5e406d",
+      "bytes": 1080,
+      "mode": "0o644"
+    },
+    {
+      "path": "LICENSES/hyprwhspr-MIT.txt",
+      "sha256": "1966ba7c99262c5449864890e47d9d77ac6c772b9d121ee6696f90901d4fcbb5",
+      "bytes": 1065,
+      "mode": "0o644"
+    },
+    {
+      "path": "PLAYBACK.md",
+      "sha256": "c7321821f50f7e21b503db728cd220b0f990694bfbdb3b308f96a695a7d9f144",
+      "bytes": 2873,
+      "mode": "0o644"
+    },
+    {
+      "path": "README.md",
+      "sha256": "1dd375182016fed145a7bc5ec0e6c55a5b67644569008c41e49787f69f60f92a",
+      "bytes": 6748,
+      "mode": "0o644"
+    },
+    {
+      "path": "REVIEW.md",
+      "sha256": "eda03e8819c2794b196df6dae6fee117484b76ec5cb9c36cd9cae56c582752fc",
+      "bytes": 9823,
+      "mode": "0o600"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "afdfca85766867c9e6aa8c202b1f95d2ee9bb2450cc1f9842d63c549489b2230",
+      "bytes": 2716,
+      "mode": "0o644"
+    },
+    {
+      "path": "dicta_config.py",
+      "sha256": "e5083fc9aa606551085285f49b77b549d23a04e66eec29eefd2662fccaf6b864",
+      "bytes": 2392,
+      "mode": "0o644"
+    },
+    {
+      "path": "docs/provenance/extraction.md",
+      "sha256": "5557c6faad94bf9c39873f4fd8b5fb23887120950b185d0d526e6814e1fabca8",
+      "bytes": 5925,
+      "mode": "0o644"
+    },
+    {
+      "path": "docs/provenance/source-inventory.json",
+      "sha256": "244afa7f57559d33c15df2a20f81c4c0ba6d928d41ff467cfdf3ee8225c0ab4f",
+      "bytes": 7819,
+      "mode": "0o644"
+    },
+    {
+      "path": "docs/validation/baseline-operativo.md",
+      "sha256": "35eb7c757dd906d5062b10e4abe27c24bf2063f67d1ad273c9f18b9774232df4",
+      "bytes": 5940,
+      "mode": "0o644"
+    },
+    {
+      "path": "docs/validation/offline.md",
+      "sha256": "4144caac047818a8252e7d18049314c4696bdcc750c932b7b49b1ce4dfc0dbb0",
+      "bytes": 6480,
+      "mode": "0o644"
+    },
+    {
+      "path": "docs/validation/retained-review.md",
+      "sha256": "6f5248e0f3d34c5a2eb351fd56a7dc8e4c6fe9afcb15160cc839a6e59d97d1c0",
+      "bytes": 8751,
+      "mode": "0o644"
+    },
+    {
+      "path": "docs/validation/scenarios.md",
+      "sha256": "2841e019c3958578cc701f706b8024f12635d73188cd31b0109a4a4139d01b12",
+      "bytes": 6069,
+      "mode": "0o644"
+    },
+    {
+      "path": "hud_bridge.py",
+      "sha256": "80abe5da2ae54a87e0e6ad77250cce93eea2b9026a518f7ebbda1295b62c58b8",
+      "bytes": 4477,
+      "mode": "0o600"
+    },
+    {
+      "path": "hud_runtime/mic_osd/__init__.py",
+      "sha256": "01dfb1289244cf957498aec7572062881c43a77dee27e4d0874993abb432b54a",
+      "bytes": 500,
+      "mode": "0o600"
+    },
+    {
+      "path": "hud_runtime/mic_osd/hud.py",
+      "sha256": "92c5607793b6851fbc315339119ae9a13db5dc7813805d31934907f95c49d324",
+      "bytes": 13727,
+      "mode": "0o600"
+    },
+    {
+      "path": "hud_runtime/mic_osd/main.py",
+      "sha256": "c5cf73bacb0b8e3caa4e35c7b5f211aa026bb4f2a108206fe3eae6c973481f54",
+      "bytes": 3567,
+      "mode": "0o600"
+    },
+    {
+      "path": "launch",
+      "sha256": "f7c82399f8b6412cb67a04eeed7948d700951e8da32c9b874063ae00bb1671ec",
+      "bytes": 841,
+      "mode": "0o700"
+    },
+    {
+      "path": "main.py",
+      "sha256": "f1b85876d8d4450a0593b0731d8984c5f73d39f4f28985dbb87bf56d5aacebd1",
+      "bytes": 6779,
+      "mode": "0o600"
+    },
+    {
+      "path": "playback.py",
+      "sha256": "6bdb48f0331a1328b83a466642013d9f70db53d3529059b49cfdf5afcc330dc8",
+      "bytes": 5390,
+      "mode": "0o644"
+    },
+    {
+      "path": "preview.py",
+      "sha256": "95afd1c441c15c136795dc59fe01d40d7e2abf578183dc84195c78295894b570",
+      "bytes": 14571,
+      "mode": "0o600"
+    },
+    {
+      "path": "protocol.py",
+      "sha256": "0e9ae096748cd4b32235cabf109be807b14e637edb8068180955b6e0a880a7aa",
+      "bytes": 2938,
+      "mode": "0o600"
+    },
+    {
+      "path": "review-hook",
+      "sha256": "b389403d579f1da45e02a568b9e830eb3c3bf030d67ab0fbe5c18589557e227a",
+      "bytes": 135,
+      "mode": "0o700"
+    },
+    {
+      "path": "review.py",
+      "sha256": "3fde9b3491bb745c31ece18ff24028bf74c01287d7fd994504115d3d4914e75a",
+      "bytes": 12672,
+      "mode": "0o600"
+    },
+    {
+      "path": "review_gate.py",
+      "sha256": "b67f8ac4d968e0e66b139ab108c701eebd461184b36b39b02b1aa77168b40221",
+      "bytes": 19716,
+      "mode": "0o644"
+    },
+    {
+      "path": "ruff.toml",
+      "sha256": "58b15c8c9fffb43911d55a0d3bbc20787441ff05b75a58ab97b2830a1a4efc8a",
+      "bytes": 246,
+      "mode": "0o644"
+    },
+    {
+      "path": "test_config.py",
+      "sha256": "1882c0dc4896017330ad32cb7a8b99617b9c2ed1bdffa837312bfa42eff121da",
+      "bytes": 10228,
+      "mode": "0o644"
+    },
+    {
+      "path": "test_hud.py",
+      "sha256": "4b2039de8232621cad19fab4c394957e63a5088020b66458deb68a0c5a05a0c9",
+      "bytes": 11202,
+      "mode": "0o600"
+    },
+    {
+      "path": "test_playback.py",
+      "sha256": "1eabcbee65e6c8b5824a08e0d54bb8f442bea59c0776efbb50408ecf0e106c3e",
+      "bytes": 13479,
+      "mode": "0o644"
+    },
+    {
+      "path": "test_preview.py",
+      "sha256": "9edc64d5a7bcdea5b41e6feb2af6b9d51ce1db440b9bb52dd8288da4f25353f3",
+      "bytes": 16170,
+      "mode": "0o600"
+    },
+    {
+      "path": "test_review.py",
+      "sha256": "eedbaf6721c66b4e83f78b392a2147d8e47dbe58a8c9cfa22be4e874229ba66b",
+      "bytes": 16274,
+      "mode": "0o600"
+    },
+    {
+      "path": "test_review_gate.py",
+      "sha256": "7c32e1b6f6a27cfd12bd8a9e16413d300b22f280d36a5505311b6d706d7cedc6",
+      "bytes": 30300,
+      "mode": "0o644"
+    },
+    {
+      "path": "worker.py",
+      "sha256": "53e1dc1ef53405455acd868f259abca6c8809a706e1f1d4c9e1fd52b139f2e87",
+      "bytes": 3718,
+      "mode": "0o600"
+    }
+  ]
+}

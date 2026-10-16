@@ -1,0 +1,3 @@
+#!/bin/sh
+# One killable process; keep the hook beside its reviewed implementation.
+exec /usr/bin/python3 -I -B -S "${0%/*}/review.py"

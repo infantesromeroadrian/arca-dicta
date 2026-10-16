@@ -1,0 +1,21 @@
+#!/bin/sh
+# Only service startup uses the extension; every CLI argument stays upstream.
+set -eu
+if [ "$#" -gt 0 ]; then
+    case "${ARCA_DICTA_UPSTREAM_BIN:-/usr/bin/hyprwhspr}" in
+        /*) exec "${ARCA_DICTA_UPSTREAM_BIN:-/usr/bin/hyprwhspr}" "$@" ;;
+        *) printf '%s\n' '[CONFIG] ARCA_DICTA_UPSTREAM_BIN must be an absolute path' >&2; exit 64 ;;
+    esac
+fi
+case "${ARCA_DICTA_PYTHON-}" in
+    /*) ;;
+    *) printf '%s\n' '[CONFIG] ARCA_DICTA_PYTHON must be set to an absolute path' >&2; exit 64 ;;
+esac
+if [ ! -f "$ARCA_DICTA_PYTHON" ] || [ ! -x "$ARCA_DICTA_PYTHON" ]; then
+    printf '%s\n' '[CONFIG] ARCA_DICTA_PYTHON must be an executable file' >&2
+    exit 64
+fi
+script_dir=$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd -P)
+unset PYTHONHOME
+export PYTHONDONTWRITEBYTECODE=1
+exec "$ARCA_DICTA_PYTHON" -B "$script_dir/main.py"
